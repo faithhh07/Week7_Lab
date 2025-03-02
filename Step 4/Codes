@@ -1,1 +1,9 @@
-h
+-- Activity 3: Preventing SQL Injection Attacks on Large Datasets
+-- Step 4: Understanding SQL Injection Risks
+
+SELECT * FROM Accounts WHERE AccountID = '' OR 1=1;
+
+PREPARE stmt FROM 'SELECT * FROM Accounts WHERE AccountID = ?';
+SET @id = 'Alice Johnson';
+EXECUTE stmt USING @id;
+DEALLOCATE PREPARE stmt;
